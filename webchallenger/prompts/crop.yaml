@@ -1,0 +1,16 @@
+# This prompt is to crop screenshot
+prompt:
+  model: vlm
+  prompts:
+    - name: crop
+      current_version: 0
+      versions:
+        0: "Point me to the location of the main content area by providing its bounding boxes."
+    - name: nav
+      current_version: 0
+      versions:
+        0: "Point me to the location of the navigation menu by providing its bounding boxes."
+    - name: footer
+      current_version: 0
+      versions:
+        0: "Point me to the location of the page footer by providing its bounding boxes."

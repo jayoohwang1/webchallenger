@@ -1,0 +1,54 @@
+prompt:
+  model: vlm
+  prompts:
+    - name: point
+      current_version: 0
+      help: "CogAgent coordinate prompt."
+      versions:
+        0: "Point me to the location of {desc} by providing its bounding boxes."
+    - name: click
+      curent_version: 0
+      help: "CogAgent click prompt"
+      versions:
+        0: "Click {desc}.(with grounding)"
+
+    - name: point_molmo
+      current_version: 0
+      versions:
+        0: Point to {desc}
+    - name: point_click_molmo
+      current_version: 0
+      versions:
+        0: Point to the location to click for the {desc} option.
+    - name: point_dropdown_molmo
+      current_version: 1
+      versions:
+        0: Point to the location to click for the '{desc}' option in the dropdown menu.
+        1: Point to the location of the '{desc}' option in the dropdown menu.
+    - name: point_action_molmo
+      current_version: 0
+      versions:
+        0: Point to the location to click in order to {action}
+    
+    - name: point_osatlas
+      current_version: 0
+      versions:
+        0: "Detect the bounding box of '{desc}'"
+    - name: point_action_osatlas
+      current_version: 0
+      versions:
+        0: "In this UI screenshot, what is the position of the element corresponding to the command \"{action}\" (with bbox)?"
+    
+    - name: point_qwen
+      current_version: 0
+      versions:
+        0: Point to {desc}, output its coordinates in XML format <points x y>object</points>
+    - name: point_action_qwen
+      current_version: 0
+      versions:
+        0: Point to the location to click in order to {action}, output its coordinates in XML format <points x y>object</points>
+
+    - name: point_holo1
+      current_version: 0
+      versions:
+        0: "Localize an element on the GUI image according to my instructions and output a click position as Click(x, y) with x num pixels from the left edge and y num pixels from the top edge.\nClick {desc}"

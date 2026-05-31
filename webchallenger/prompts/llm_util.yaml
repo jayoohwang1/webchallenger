@@ -1,0 +1,222 @@
+prompt:
+  model: llm
+  prompts:
+    - name: summarize_desc
+      current_version: 0
+      versions:
+        0: |-
+          You will be given a visual description of a webpage section and your job is to concisely summarize the key details mentioned in one sentence. The summary should provide a clear description about the types of information or functionality available in that section of the page so that users can reference it for future use. Details relating to the visual appearance of elements such as color, font, size or design patterns are not important and can be omitted. You should prioritize information that would be helpful for guiding users on how to use the site.
+
+          Provide your answer in the following format:
+          Summary: This section contains ...
+
+          Examples:
+          
+          Website: The screenshot shows a webpage with three products displayed in a row. Each product has a photo, a title, a price, and an 'Add to Cart' button. From left to right: The first product is a 'Bookshelf Bookcase Storage Rack Standing Shelf Industrial Stable Bookcase with Iron Tube Frame for Home, Living Room, Bedroom, Office by Tribesigns' priced at $42.99. The second product is a 'Music Note Flannel Fleece Blanket,Ultra Soft White Black Print Cozy Plush Throw Blanket Lightweight Warm Blankets and Throws Decorative for Couch Bed Living Room Office Gift for Adults 80x60 Inch' priced at $42.99. The third product is a '4D Concepts Forester Cabinet, 31.5x13.78x29.92, MULTI-TEXTERED GRAY W/DSTRESSED WOOD $174.22' priced at $49.87. There are page navigation controls at the bottom with '1 2 3 4 5' indicating multiple pages of products and a 'Show 12 per page' dropdown menu.
+          
+          Summary: This section contains several furniture products, page navigation controls '1 2 3 4 5', and a 'Show 12 per page' dropdown menu.
+
+          Website: The screenshot shows a list of categories under the title 'Shop By'. Each category is a clickable link that presumably leads to a subcategory or product list within a beauty or personal care e-commerce site. The categories listed are: Oral Care, Skin Care, Makeup, Foot, Hand & Nail Care, Hair Care, Tools & Accessories, Fragrance, Personal Care, Shave & Hair Removal, and Salon & Spa Equipment.
+          
+          Summary: This section contains a list of links to subcategories related to beauty and personal care products.
+
+          Now here is a detailed description of a webpage section that you must summarize. Write a concise summary that highlights the key information and functionality contained in this section.
+    - name: sort_elements
+      current_version: 0
+      versions:
+        0: >
+          "
+          I will give you a description of a website and your job is to organize the page elements mentioned in the description into three basic types:
+          1) Navigation elements: for navigating to a section of a website. Examples include links for categories, topics, services, user profiles, or account settings. Also includes elements related to searching, pagination control, price filters and sort order.
+          2) Content elements: a specific item of content listed on the site. Examples include specific products, articles, documents, videos, images, social media posts, user account pages or forum posts.
+          3) Action elements: used to perform an action on the website. Examples include adding an item to cart, uploading files, leaving a rating, leaving a comment, publishing an ad, or creating a post.
+
+          The description of the content visible on the current page will be given as:
+
+          Website: description of website
+
+          Provide your answer in the following format:
+
+          Navigation elements: {elements}
+          Content elements: {elements}
+          Action elements: {elements}
+
+          Examples:
+
+          Website: The screenshot shows a webpage with a section titled 'Shop By' followed by 'Shopping Options' and 'Category'. Under Category, there are options such as Furniture, Bedding, Storage & Organization, Home Décor Products, Kitchen & Dining, Heating, Cooling & Air Quality, and Wall Art. Each category has a number in parentheses indicating the number of items available in that category. Below this, there is a 'Price' section with price ranges and the number of items available within each range. At the bottom, there is a 'Compare Products' section with a note that there are no items to compare. The page also has a 'Recently Ordered' section with items like Mounted Shelf with 4 Hooks and a Solid Wooden Shelf. There are checkboxes for 'Plus Size Lingerie for Women' and 'Uttermost Volterra Crackled Taupe-Gray Ceramic Table Lamp'.
+          
+          Navigation elements:
+            * Furniture
+            * Bedding
+            * Storage & Organization
+            * Home Décor Products
+            * Kitchen & Dining
+            * Heating, Cooling & Air Quality
+            * Wall Art
+          
+          Content elements:
+            * Mounted Shelf with 4 Hooks and a Solid Wooden Shelf
+          
+          Action elements:
+            * 'Price' section
+            * Checkbox for 'Plus Size Lingerie for Women'
+            * Checkbox for 'Uttermost Volterra Crackled Taupe-Gray Ceramic Table Lamp'
+          
+          Sort the elements mentioned in the following website description into the three types. If there are no elements of a specific type mentioned then answer 'None'.
+          "
+    - name: sort_4
+      current_version: 0
+      versions:
+        0: >
+          "
+          I will give you a description of a website and your job is to organize the page elements mentioned in the description into four basic types:
+
+          1. Account elements: links related to the user's account such as login, account creation, website settings, and shopping cart. Also includes links related to the user's activity history such as previous orders, posts, or comments.
+          2. Category elements: links for a section of a website containing a specific type of content. Examples include links for categories, topics, or subforums. Also includes the website logo or header since they usually serve as home page links.
+          3. Content elements: a specific item of content listed on the site. For example, a specific product, article, document, video, image, social media post, or forum post. Also includes the profile pages of other usernames on the site.
+          4. Action elements: used to perform an action on the website such as searching, pagination control, sorting lists, setting price range, filtering results, adding an item to cart, uploading files, rating content, leaving a comment, publishing an ad, or creating a post.
+
+          Organize the page elements from the description into the four types as a list of the strings. Here are some examples:
+
+          Website: The screenshot shows a webpage with three products displayed in a row. Each product has a photo, a title, a price, and an 'Add to Cart' button. From left to right: The first product is a 'Bookshelf Bookcase Storage Rack Standing Shelf Industrial Stable Bookcase with Iron Tube Frame for Home, Living Room, Bedroom, Office by Tribesigns' priced at $42.99. The second product is a 'Music Note Flannel Fleece Blanket,Ultra Soft White Black Print Cozy Plush Throw Blanket Lightweight Warm Blankets and Throws Decorative for Couch Bed Living Room Office Gift for Adults 80x60 Inch' priced at $42.99. The third product is a '4D Concepts Forester Cabinet, 31.5x13.78x29.92, MULTI-TEXTERED GRAY W/DSTRESSED WOOD $174.22' priced at $49.87. There are page navigation controls at the bottom with '1 2 3 4 5' indicating multiple pages of products and a 'Show 12 per page' dropdown menu.
+
+          Account elements: None
+          Category elements: None
+          Content elements: ['Bookshelf Bookcase Storage Rack', 'Music Note Flannel Fleece Blanket', '4D Concepts Forester Cabinet']
+          Action elements: ['Add to Cart button', 'navigation controls at the bottom with '1 2 3 4 5', 'Show 12 per page dropdown menu']
+
+          Website: The screenshot shows the Amazon.com homepage with a search bar at the top. The search bar contains the placeholder text 'Search Amazon.com' and a magnifying glass icon to the right. Below the search bar, there are several links including 'Deliver to Jay', 'Calgary T5G 5B', 'Returns', 'Cart', and language selection options for English and French. The main navigation menu includes categories such as 'All', 'Deals Store', 'Buy Again', 'Browsing History', among others. There are also links to 'Kindle Books', 'Books', 'Gift Cards', 'Best Sellers', 'Gift Ideas', 'Coupons', 'New Releases', and 'Home'. The Amazon logo is displayed on the top left corner.
+
+          Account elements: ['Deliver to Jay', 'Calgary T5G 5B', 'Returns', 'Cart', 'language selection options', 'Browsing History']
+          Category elements: ['All', 'Deals Store', 'Buy Again', 'Kindle Books', 'Books', 'Gift Cards', 'Best Sellers', 'Gift Ideas', 'Coupons', 'New Releases', 'Home', 'Amazon logo']
+          Content elements: None
+          Action elements: ['search bar', 'magnifying glass icon']
+
+          Website: The screenshot shows a section of a webpage with a header titled 'Shop By'. Below the header, there are categories listed for shopping options, including 'Clothing', 'Shoes', and 'Accessories', each with a number of items available. The price range for each category is also listed. Further down, there is a section titled 'Compare Products' with a prompt to compare items. At the bottom, there is a 'Recently Ordered' section with items listed, such as 'Uttermost Volterra Crackled Taupe-Gray Ceramic Table Lamp' and 'NOZE Rustic Coat Rack Wall Mounted Shelf with 4 Hooks'.
+
+          Account elements: ['Recently ordered']
+          Category elements: ['Shop By', 'Clothing', 'Shoes', 'Accessories']
+          Content elements: ['Uttermost Volterra Crackled Taupe-Gray Ceramic Table Lamp', 'NOZE Rustic Coat Rack Wall Mounted Shelf with 4 Hooks']
+          Action elements: ['price range', 'Compare Products', '']
+
+          Organize the elements from the following website description into the four types and provide your answer in the same format as the examples. Make sure to prioritize including all elements that have their name explicitly mentioned in the description. All element strings in the answer lists MUST be enclosed in '' to ensure valid string parsing.
+          
+          "
+    - name: extract_list
+      current_version: 0
+      versions:
+        0: |-
+          You are a data entry worker. Your current task is to extract named entities from each given piece of text and format them into a list of Python strings so that they can be parsed by our database management program. You will be provided with snippets of unstructured, natural language text from documents that describe lists of named entities, mostly from various websites. The named entities will include things such as the names of items, links, usernames, or article titles.
+
+          The given text will be labelled as "RAW_TEXT", e.g.:
+
+          RAW_TEXT: {text for you to format}
+
+          Provide the parsed list of names with the label "PARSED_LIST":
+
+          PARSED_LIST: {names in proper python list format}
+
+          Here is an example:
+
+          RAW_TEXT: The names of the first three list elements are: [homemade] French Toast, Lean and Jowl Bacon, Homemade Chipolatas and Sunny Eggs, [homemade] Arancini, and [homemade] Avocado Toast with a Fried Egg and Chili Crisp.
+
+          PARSED_LIST: ["[homemade] French Toast", "[homemade] Arancini", "[homemade] Avocado Toast"]
+
+          Also, make sure to follow these additional guidelines:
+          - Some of the text may include long names. If a name is longer than 5 words then shorten the name to between 3 and 5 words long. For example the text "Moldova condemns Russian strikes after missile debris lands in its territory." can be shortened to "Moldova condemns Russian strikes".
+          - It is recommended to include one space in between the list items for readability.
+          - If a text includes a quotation character (") you must add a slash before it (/"). This is required to avoid a Python syntax error. For example the text "13x90" Table Runner with Placemats Set of 6" should be changed to "13x90\" Table Runner with Placemats".
+
+          Extract the names from the following text and provide them as a properly formatted Python list. All strings MUST be enclosed in quotations and separated by commas inside of square brackets (e.g., ["a", "b", "c"]).
+
+    - name: summarize_section
+      current_version: 1
+      versions:
+        0: |-
+          You are a screen reading assistant tasked with helping the visually impaired navigate websites. You will be provided with a webpage section and the elements inside it. Your job is to describe each section with a brief and informative summary.
+
+          For each webpage section, you will be given information about its HTML tag, its \"class\" attribute, and the elements contained inside it in the following format:
+
+          <tag> class=\"{class}\"
+
+          Elements:
+          {list}
+
+          After being presented with the section information, you should write one sentence that describes the general functionality contained in the section to the user.
+
+          Always provide your summary labeled with '**Section Summary**:' at the beginning as shown below:
+
+          **Section Summary**: {summary}
+
+          **Note**:
+          * Keep each summary within one sentence in length. It is not necessary to mention every detail.
+          * Each summary should contain enough detail to give the user an idea of the overall website structure, while still being brief enough to be read time efficiently.
+          * Provide only the final section summary in your answer. Do not include any extra notes.
+
+          Here is an example:
+
+          <header> class="page-header"
+
+          Elements:
+          1. link "My Account"
+          2. link "My Wish List"
+          3. link "Sign Out"
+          4. link "one_stop_market_logo"
+          5. dropdown menu "My Cart"
+          6. combobox "Search"
+          7. link "Advanced Search"
+
+          **Section Summary**: This header section contains navigation links and a search function, allowing users to access their account information, shopping cart, and search for products.
+
+          Now, here is a real webpage section for you to summarize. Please write a succinct description of the functionality contained in the section to the user following the instructions given.
+        1: |-
+          You are a screen reading assistant tasked with helping the visually impaired navigate websites. You will be provided with a webpage section and the elements inside it. Your job is to describe each section with a brief and informative summary.
+
+          For each webpage section, you will be given information about its HTML tag, its \"class\" attribute, and the elements contained inside it in the following format:
+
+          <tag> class=\"{class}\"
+
+          Elements:
+          {list}
+
+          After being presented with the section information, you should write one sentence that describes the general functionality contained in the section to the user.
+
+          Always provide your summary labeled with '**Section Summary**:' at the beginning as shown below:
+
+          **Section Summary**: {summary}
+
+          **Note**:
+          * Keep each summary within one sentence in length.
+          * Provide only the final section summary in your answer. Do not include any extra notes.
+
+          Here is an example:
+
+          <header> class="page-header"
+
+          Elements:
+          1. link "My Account"
+          2. link "My Wish List"
+          3. link "Sign Out"
+          4. link "one_stop_market_logo"
+          5. dropdown menu "My Cart"
+          6. combobox "Search"
+          7. link "Advanced Search"
+
+          **Section Summary**: This header section contains navigation links and a search function, allowing users to access their account information, shopping cart, and search for products.
+
+          Now, here is a real webpage section for you to summarize. Please write a succinct description of the functionality contained in the section to the user following the instructions given.
+    
+    - name: summarize_list_actions
+      current_version: 0
+      versions:
+        0: |-
+          You are a helpful assistant who creates user-friendly summaries for web pages. You will be given details about a page containing a list of items that each have several actions elements. Your current task is to write a general summary describing the action elements that are available for each of the list items.
+
+          The following details will be provided:
+          LIST CONTENT: brief description of the list
+          # LIST ITEMS #: examples of action elements for a few of the list items
+
+          Based on this information, create a concise summary that describes the general functionality of the action elements that are available for each list item.
+
+          Give your summary in this format:
+          **ITEM ACTIONS**: general summary of the list item actions

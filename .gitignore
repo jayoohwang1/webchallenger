@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Secrets & auth
+.env
+.env.*
+.auth/
+
+# Runtime lock file
+webchallenger.lock
+
+# Runtime outputs (keep the folders, ignore their contents)
+webchallenger/results/*
+!webchallenger/results/.gitkeep
+webchallenger/memory/screenshots/*
+!webchallenger/memory/screenshots/.gitkeep
+webchallenger/memory/saved_files/*
+!webchallenger/memory/saved_files/.gitkeep
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,45 @@
+{
+    "sites": [
+        "shopping"
+    ],
+    "task_id": 0,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_state.json",
+    "start_url": "http://localhost:7770",
+    "geolocation": null,
+    "intent_template": "Bring me to the produce page of something like this.",
+    "intent": "Bring me to the produce page of something like this.",
+    "image": "https://images.pexels.com/photos/837267/pexels-photo-837267.jpeg",
+    "instantiation_dict": {},
+    "require_reset": false,
+    "eval": {
+        "eval_types": [
+            "page_image_query"
+        ],
+        "page_image_query": [
+            {
+                "eval_image_url": "http://localhost:7770/artificial-flower-calla-lily-faux-small-potted-plant-with-black-pot-fake-bonsai-flower-for-home-office-indoor-and-outdoor-occasions-decor-red-fake-flower.html",
+                "eval_image_class": ".fotorama__stage__frame",
+                "eval_vqa": [
+                    {
+                        "question": "Is this a cactus? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "question": "Is this a potted plant? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            }
+        ],
+        "reference_url": "http://localhost:7770/artificial-cactus-fake-cactus-16-faux-cacti-plants-for-home-garden-office-store-decoration.html",
+        "program_html": [],
+        "string_note": "",
+        "reference_answer_raw_annotation": ""
+    },
+    "intent_template_id": 0,
+    "reasoning_difficulty": "easy",
+    "visual_difficulty": "medium",
+    "comments": "http://localhost:7770/artificial-cactus-fake-cactus-16-faux-cacti-plants-for-home-garden-office-store-decoration.html",
+    "overall_difficulty": "medium"
+}

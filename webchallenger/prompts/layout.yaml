@@ -1,0 +1,199 @@
+prompt:
+  model: vlm
+  prompts:
+    - name: layout
+      current_version: 0
+      versions:
+        0: Describe the layout of the content shown.
+    - name: layout_short
+      current_version: 0
+      versions:
+        0: Describe the content of this page in one sentence.
+    - name: get_page_title
+      current_version: 0
+      versions:
+        0: 'Tell me the exact title of this page in the screenshot. Do not include the name of the website in your answer, only the name of this specific page. Additionally, make sure to provide the title of the main page found in the header, not the title of any content or list items. Extract the text for the page title in this format: "TITLE: {page_title}"'
+    - name: is_login
+      current_version: 0
+      versions:
+        0: Is this a login page?
+    
+    - name: page_summary
+      current_version: 1
+      versions:
+        0: Summarize this page in one sentence.
+        1: Describe the content of this page in one sentence.
+    - name: site_page_summary
+      current_version: 0
+      versions:
+        0: Describe this page of the {website_name} website in one sentence.
+    - name: site_page_report
+      current_version: 0
+      versions:
+        0: Provide a concise, one paragraph report summarizing the information contained on the {website_name} "{page_name}" page.
+    - name: site_page_describe
+      current_version: 0
+      versions:
+        0: Provide a detailed description of the {website_name} "{page_name}" page shown in this screenshot.
+    
+    - name: screen_diff
+      current_version: 1
+      versions:
+        0: Describe how the web page changed from the first screenshot to the second.
+        1: Describe the difference between the content of the first page vs the second page.
+    - name: screen_diff_action
+      current_version: 0
+      versions:
+        0: These two screenshots show the {website_name} website immediately before and after I {action_str}. What was the result of the action?
+    
+
+    - name: vlm_summarize_section
+      current_version: 0
+      versions:
+        0: Describe the content of this section in one sentence.
+    - name: describe_section
+      current_version: 0
+      versions:
+        0: Describe this section in detail.
+    - name: describe_section_detail
+      current_version: 1
+      versions:
+        0: Describe the information contained in this section of the {website_name} website in detail.
+        1: Describe this section of the {website_name} website in detail.
+    - name: describe_section_site
+      current_version: 0
+      versions:
+        0: Describe this section of the {website_name} website in one sentence.
+    - name: highlight_interface
+      current_version: 0
+      versions:
+        0: Highlight the information and interactible elements provided in this {website_name} interface.
+    - name: summarize_table
+      current_version: 0
+      versions:
+        0: Provide a brief summary describing the type of information contained in the table.
+    - name: list_options
+      current_version: 0
+      versions:
+        0: List the options available in this section.
+    - name: list_type
+      current_version: 0
+      versions:
+        0: Are the items on the page organized in a list or a grid layout?
+    - name: what_kind_info
+      current_version: 0
+      versions:
+        0: What kind of information is contained in this section of the {website_name} website?
+    - name: extract_info
+      current_version: 0
+      versions:
+        0: Extract the information contained in this section.
+    - name: extract_text
+      current_version: 0
+      versions:
+        0: Precisely extract the exact text contained in this screenshot.
+
+    - name: list_dropdown_md
+      current_version: 0
+      versions:
+        0: List all items contained in the {menu_name} dropdown menu formatted using markdown bullet points ('*').
+    - name: list_dropdown
+      current_version: 0
+      versions:
+        0: Describe the content of the {menu_name} dropdown menu.
+
+
+
+
+    - name: has_images
+      current_version: 0
+      versions:
+        0: Do any of the list items have thumbnail images?
+    - name: has_comments
+      current_version: 0
+      versions:
+        0: Does each list item have a link showing the number of comments?
+    - name: describe
+      current_version: 0
+      versions:
+        0: Describe the screen.
+    - name: describe_content
+      current_version: 0
+      versions:
+        0: Describe the content of the page.
+
+
+    - name: img_query
+      current_version: 0
+      versions:
+        0: "Describe the image and tell me if it might match the query: '{query}'. Say it is relevant if it looks promising and is not clearly unrelated. Answer in one sentence."
+
+    - name: desc_img_long
+      current_version: 0
+      versions:
+        0: Provide all information contained in this image.
+        1: |-
+          Fully extract all information contained in this image in an organized format.
+
+          Make sure to include:
+          - All textual and/or numerical information.
+          - Visual features such as objects, colors, and settings.
+          - Names of any recognizable people, celebrities, characters, media, or locations.
+
+    - name: desc_img_med
+      current_version: 1
+      versions:
+        0: Provide a concise one paragraph description of this image, highlighting key visual features and any information displayed.
+        1: Highlight the key visual features and information displayed in this image using at most 2 sentences.
+        2: Describe what is shown in this image. Answer in 2 sentences or less.
+    - name: desc_img_short
+      current_version: 0
+      versions:
+        0: Describe the image with a short sentence.
+    - name: desc_thumbnail
+      current_version: 0
+      versions:
+        0: Provide a one sentence description of what this thumbnail image shows.
+
+    - name: img_question
+      current_version: 0
+      versions:
+        0: "{question}? Provide your answer only."
+    - name: vlm_list_sort
+      current_version: 1
+      versions:
+        0: "Describe how this list is sorted. Answer in one sentence."
+        1: What is the current sort setting of the list? Answer in one sentence. If not visible, answer 'None'.
+    - name: list_item_details
+      current_version: 0
+      versions:
+        0: List the details of the content items on this page.
+    - name: list_item_numbers
+      current_version: 0
+      versions:
+        0: List the numerical information for each of the content items on this page.
+    - name: list_elements
+      current_version: 0
+      versions:
+        0: What are the titles of the list elements?
+    - name: list_n_elements
+      current_version: 0
+      versions:
+        0: List the names of the first {n} list elements.
+    - name: list_categories
+      current_version: 0
+      versions:
+        0: List the names of all categories and subcategories shown.
+    - name: next_page_exists
+      current_version: 0
+      versions:
+        0: Is there an option to go to the next page at the bottom of the screen?
+    - name: which_part
+      current_version: 0
+      versions:
+        0: Which part of the website is shown?
+    - name: what_elements
+      current_version: 0
+      versions:
+        0: What elements are visible on the screen?
+

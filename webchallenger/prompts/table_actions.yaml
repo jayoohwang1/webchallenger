@@ -1,0 +1,254 @@
+prompt:
+  model: llm
+  prompts:
+    - name: table_sort_order
+      current_version: 0
+      versions:
+        0: |-
+          Can you please analyze this table and determine how the rows are sorted (from top to bottom)? Sequences of equal values should be considered sorted.
+
+          TABLE:
+          {table_info}
+
+          First think step-by-step about the information in the table and describe your reasoning process. Then, once you have identified the table sort column and direction, give your answer as:
+
+          ANSWER: description of how the table rows are sorted
+
+          If the items are not clearly sorted in a particular order, give "None" as your answer.
+
+
+
+    - name: table_subgoal
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. You will be requested by the user to complete a task which will involve finding one or more table entries that meet specific requirements. The first thing you must do is identify the precise attributes of the entries the user has asked for, and then describe your goal for what you need to find.
+
+          The task details will be provided in this format:
+
+          TASK: task request from user
+
+          PAGE: page title and url
+
+          TABLE: summary of table
+
+          Think step-by-step about the details of the table entries the user has requested you to find, then describe the details to look for in your goal.
+
+          Provide your full thought process and your answer in this format:
+
+          **THOUGHTS**: reasoning steps
+
+          **GOAL**: table entries you are trying to find
+
+          Note:
+          - Your goal should be a clear and concise sentence that describes the entries to look for.
+          - The goal should focus on the current step of finding the correct table entries first. Any next steps needed for the task will be handled after they are found.
+          - Make sure that your plan is clear about whether you need to find one or multiple table entries (e.g. "Find the ..." vs "Find all ...").
+
+          Here is an example:
+          <example>
+          TASK: Tell me the number of fulfilled orders I have since 01/12/23.
+
+          PAGE: My Orders (https://www.onestopmarket.com/sales/order/history/?limit=50)
+
+          TABLE: This section presents a detailed table of recent orders, including order numbers, dates, totals, statuses, and actions to view or reorder items.
+
+          **THOUGHTS**: To fulfill the user's request, we need to identify the relevant orders based on two criteria:
+          18. The order has been fulfilled.
+          19. The order date falls after the specified date of 01/12/23, which is January. 12, 2023.
+
+          **GOAL**: Find all fulfilled orders that have a date later than January 12, 2023.
+          </example>
+
+    - name: check_table_info
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks on various websites. You will be given an objective which will require finding information within a table on the page. The table will contain a list of data entries that each have links for viewing more details if needed. Your must first figure out what details are needed to identify the entries you are looking for and then determine if these details are in the table columns or not.
+
+          Your objective and the table information will be provided in this format:
+
+          OBJECTIVE: the goal you need to complete
+          TABLE: the first few table rows
+
+          Think step-by-step about the details you need to identify the table entries specified by the objective. If any required details are not present in the table columns, then you will have check each link for more details.
+
+          Provide your full thought process as:
+          **THOUGHTS**: your reasoning
+
+          You will have the following options to choose as your answer:
+          * All details: table provides all info needed to find the entries.
+          * Missing details: not all required info for finding specified entries is in the table, viewing more details is necessary.
+
+          Give your answer as:
+          **ANSWER**: your choice (All details/Missing details)
+
+          Reminder:
+          - Only a few rows of the table will be shown to give you an idea of the table structure. The full table will be provided afterwards.
+    
+    - name: select_rows_short
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. You will be requested by the user to complete a task that involves finding one or more items in a list of content (e.g. a list of links, products, articles, comments, etc.) on the website. The list of items on the current page will be shown and you will have the option to select any items that are relevant to the task based on their positional indices.
+
+          The following information will be provided:
+          TASK: the user's task instructions
+          PAGE: title and url of the current page
+          LIST INFO: summary describing the content list
+          LIST ITEMS: the list items on the current page of results
+
+          Think step-by-step about the given information and determine if there are any relevant list items on the current page of results. Then, select all items that are relevant to the task in any way by providing a comma-separated list of integers corresponding to the positional indices of those items (e.g. "2, 9, 13"). You also have the option to provide 'None' or 'All' as your answer to select none or all of the list items shown.
+
+          Provide the full thought process behind your answer followed by your final answer for the item selection in this format:
+
+          **THOUGHTS**: your reasoning steps
+
+          **SELECT ITEMS**: list items to select (either list of integers, 'None', or 'All')
+
+          Note:
+          - If the task specifies to find an item with a specific attribute value and one of the list items is very close but not an exact match, you should still select the item to account for potential formatting differences.
+
+    - name: select_table_rows
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. You will be requested by the user to complete a task that involves finding one or more items in a list of content (e.g. a list of links, products, articles, comments, etc.) on the website. The list of items on the current page will be shown and you will have the option to select any items that are relevant to the task based on their positional indices.
+
+          The following information will be provided:
+          TASK: the user's task instructions
+          HISTORY: summary of previous task steps
+          PAGE: title and url of the current page
+          LIST INFO: summary describing the content list
+          LIST ITEMS: the list items on the current page of results
+
+          Think step-by-step about the given information and determine if there are any relevant list items on the current page of results. Then, select all items that are relevant to the task in any way by providing a comma-separated list of integers corresponding to the positional indices of those items (e.g. "2, 9, 13"). If there are no exact matches in the list, then still select the item that is the closest match. If all items are completely unrelated to the task, then you can answer 'None'.
+
+          Provide the full thought process behind your answer followed by your final answer for the item selection in this format:
+
+          **THOUGHTS**: your reasoning steps
+
+          **SELECT ITEMS**: list items to select (list of integers or 'None')
+
+          Additional Guidelines:
+          - If some of the list items seem like potential matches but there is not enough information to confirm, select them in order to view more details.
+          - Select all items that are partially related to the task requirements even if they are not exact matches.
+          - Always include all items that are mentioned in the task instructions.
+          - End your response after selecting the list items.
+
+    - name: done_table_iter
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. Your current objective requires you to find specific entries in a table and you have previously checked a subset of the table and found one more matching entries. Now you can choose to either continue searching the rest of the table or stop if you have already found what you need.
+
+          You will be provided with the following information:
+          OBJECTIVE: your overall task
+          CURRENT PAGE: name, url, and summary of the web page
+          TABLE INFO: description of the table
+          ROWS CHECKED: the list of table rows that have been checked so far
+
+          Think step-by-step about the requirements of the objective and the matches that have been found among the rows that have been checked so far. Then determine if all table entries required by the task have been found, or if you need to check the remaining rows.
+
+          Give your full thought process and your answer in this format:
+          **THOUGHTS**: your reasoning
+          **COMPLETE**: whether the objective has been completed (Yes/No)
+
+
+    
+
+
+
+    - name: get_list_sort
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. You will be provided with a list of markdown strings that have been extracted from a list of content items on a web page. Your task is to identify if the list items are sorted from first to last in a particular order.
+
+          The information about the current page will be given as:
+          PAGE: url of current page
+
+          The details for the list items will be given in this format:
+          First 5 list items:
+          1. Text:
+          """
+          <list item markdown>
+          """
+          ...
+          5. Text:
+          """
+          <list item markdown>
+          """
+
+          Think step-by-step and analyze the details present in the list items to check if they are sorted in order by a particular attribute.
+
+          Provide your full thought process followed by your answer as:
+          **THOUGHTS**: reasoning steps
+          **SORT ORDER**: description of how the list is sorted, e.g. "The list is sorted (by most recent date, by lowest price, alphabetically, etc.)"
+
+          If the items are not clearly sorted in a particular order (from first to last), give "None" as your answer.
+    
+    - name: item_structure
+      current_version: 0
+      versions:
+        0: |-
+          I will give you a list of items containing structured text data, and I need you to identify the common structure of the entries and then define a class that represents the data.
+
+          Provide the data class in this format:
+          DATA CLASS:
+          {class_name}:
+            - {attribute_1}
+            - {attribute_2}
+            ...
+            - {attribute_n}
+
+          Additional Guidelines:
+          * If the items in the list do not share the same structure then provide 'None' as your answer.
+          * End your response after providing the data class.
+    
+    - name: item_attributes
+      current_version: 0
+      versions:
+        0: |-
+          I have a list of structured data entries and I have filtered them to find the entries that match my desired query. Now you must identify the attributes that need to be extracted from the matching queries.
+
+          Provide the names of the attributes to extract separated by commas in this format:
+          ATTRIBUTES: list of attributes
+
+    - name: extract_list_info
+      current_version: 0
+      versions:
+        0: |-
+          For each of the given list items, extract the values of the following attributes: {attr_list}
+
+          Provide the list of extracted values in this format:
+          ITEM VALUES:
+          1. <attribute values for item 1>
+          2. <attribute values for item 2>
+          ...
+
+          If the given list items do not contain the specified attribute information then your answer should be 'ITEM VALUES: None'. Now let's get started.
+
+
+    - name: done_list_iter
+      current_version: 0
+      versions:
+        0: |-
+          You are an intelligent virtual assistant who completes tasks for users on various websites. Your current objective requires you to find one or more items in a list of content (e.g. a list of pages, products, articles, comments, etc.). In the previous steps you have iterated over the items in order and recorded any matching items found. You will be given the history of the items you have checked so far and you must determine if the objective is complete or if you still need to find more items in the list.
+
+          You will be provided with the following information:
+          PAGE: title, url, and description of the current page
+          OBJECTIVE: the task you must complete
+          ITEMS CHECKED: list of items that have been checked so far, and whether they match
+
+          Think step-by-step about the requirements of the objective and the details about the items that have been checked so far. Then, determine if the task is complete or if you still need to look for more items in the rest of the list.
+
+          Give your full thought process and your answer in this format:
+          **THOUGHTS**: steps behind your reasoning process
+          **COMPLETE**: whether the objective has been completed (Yes/No)
+
+          Reminder:
+          - Pay attention to the sort order of the list. It may allow you to determine if the remaining list items are worth checking (e.g. if you need to find the cheapest item and the list is sorted by price, then the remaining items will be more expensive).
+          - If it is still possible that there might be more matching items in the list, then you should keep searching to be sure.
+
+

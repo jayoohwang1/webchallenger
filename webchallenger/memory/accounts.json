@@ -1,0 +1,44 @@
+{
+    "http://localhost:9999/": {
+        "login_page": "http://localhost:9999/login",
+        "user_field_id": "login-username",
+        "pass_field_id": "login-password",
+        "username": "MarvelsGrantMan136",
+        "password": "test1234"
+    },
+    "http://localhost:7770/": {
+        "login_page": "http://localhost:7770/customer/account/login/",
+        "user_field_id": "email",
+        "pass_field_id": "pass",
+        "username": "emma.lopez@gmail.com",
+        "password": "Password.123"
+    },
+    "http://localhost:9980/": {
+        "login_page": "http://localhost:9980/index.php?page=login",
+        "user_field_id": "email",
+        "pass_field_id": "password",
+        "username": "blake.sullivan@gmail.com",
+        "password": "Password.123"
+    },
+    "http://localhost:7780/admin/": {
+        "login_page": "http://localhost:7780/admin/admin/",
+        "user_field_id": "username",
+        "pass_field_id": "login",
+        "username": "admin",
+        "password": "admin1234"
+    },
+    "http://localhost:8023/": {
+        "login_page": "http://localhost:8023/users/sign_in",
+        "user_field_id": "user_login",
+        "pass_field_id": "user_password",
+        "username": "byteblaze",
+        "password": "hello1234"
+    },
+    "http://ec2-3-147-250-91.us-east-2.compute.amazonaws.com:8023/": {
+        "login_page": "http://ec2-3-147-250-91.us-east-2.compute.amazonaws.com:8023/users/sign_in",
+        "user_field_id": "user_login",
+        "pass_field_id": "user_password",
+        "username": "byteblaze",
+        "password": "hello1234"
+    }
+}
