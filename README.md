@@ -1,6 +1,6 @@
 # WebChallenger: A Reliable and Efficient Generalist Web Agent
 
-📄 [Paper](PAPER_URL) | 🌐 [Website](WEBSITE_URL) | ✍️ [Blog](BLOG_URL) | 🐦 [Twitter](TWITTER_URL)
+📄 [Paper](PAPER_URL) | 🌐 [Website](WEBSITE_URL) | ✍️ [Blog](BLOG_URL)
 
 WebChallenger is a web agent framework built around **PageMem**, a structured page representation deterministically constructed from the DOM that exposes each page as a hierarchy of semantic sections with short summaries. On this shared substrate it builds three mechanisms that mirror human advantages in web navigation:
 
