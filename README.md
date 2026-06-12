@@ -1,6 +1,6 @@
 # WebChallenger: A Reliable and Efficient Generalist Web Agent
 
-📄 [Paper](PAPER_URL) | 🌐 [Website](WEBSITE_URL) | ✍️ [Blog](BLOG_URL)
+📄 [Paper](https://arxiv.org/abs/2606.10423) | 🌐 [Website](https://jayoohwang1.github.io/webchallenger-site/) | ✍️ [Blog](https://jayoohwang1.github.io/blog/webchallenger/)
 
 WebChallenger is a web agent framework built around **PageMem**, a structured page representation deterministically constructed from the DOM that exposes each page as a hierarchy of semantic sections with short summaries. On this shared substrate it builds three mechanisms that mirror human advantages in web navigation:
 
@@ -8,7 +8,7 @@ WebChallenger is a web agent framework built around **PageMem**, a structured pa
 - **Offline exploration & memory**: a lightweight crawl traverses each website once to build a reusable map of pages and element behaviors, shared across all tasks on a site.
 - **Compound action workflows**: common multi-step interactions (form-filling, dropdowns, search, etc.) collapse into single agent actions that handle partial state changes automatically.
 
-Because all three operate over PageMem, the framework generalizes across websites without site-specific adapters. Using off-the-shelf open-weight models with no fine-tuning, WebChallenger sets new open-model state-of-the-art on four web navigation benchmarks (56.3% on WebArena, 48.7% on VisualWebArena, 51.0% on Online-Mind2Web, and 70.9% on WorkArena), approaching frontier proprietary systems at a fraction of the cost.
+Because all three operate over PageMem, the framework generalizes across websites without site-specific adapters. Using off-the-shelf open-weight models with no fine-tuning, WebChallenger sets new open-model state-of-the-art across multiple web navigation benchmarks (56.3% on WebArena, 48.7% on VisualWebArena, 51.0% on Online-Mind2Web, and 70.9% on WorkArena) and approaches the performance of systems using proprietary models at a fraction of the cost.
 
 ![Overview of WebChallenger](assets/figure_overview.png)
 
