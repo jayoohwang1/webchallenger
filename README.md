@@ -158,3 +158,23 @@ Example showing how to run the agent starting from a custom url and task
 ```
 webchal --start_url "https://en.wikipedia.org/wiki/Main_Page" --intent "Navigate to the contents page"
 ```
+## Optional batched inference
+
+The original per-section pipeline remains the default. Enable these agent flags
+independently, or combine them:
+
+- `--batch_section_summaries`: summarize page sections together.
+- `--batch_detail_extraction`: extract details from selected sections and produce
+  the overall page summary together.
+- `--joint_action_selection`: select one next action from the combined candidates
+  in relevant sections and page-level controls, instead of selecting candidates
+  separately for each section.
+
+These options are also available as boolean fields on `CFG`. Memory and compound
+workflows remain enabled. Dropdown option selection retains its own flat action
+format. Invalid section IDs are skipped, and malformed responses receive parser
+feedback for correction.
+
+The regression tests use mocked model responses and local browser fixtures; they
+make no paid model calls. Browser tests use Playwright Chromium by default, or
+`WEBCHALLENGER_CHROMIUM` when a custom executable is required.

@@ -614,7 +614,7 @@ def revert_sim_url(url: str) -> str:
         sim_url = url.replace("https://en.wikipedia.org", os.environ.get('WIKIPEDIA'))
         return sim_url
     if "http://magento.site/" in url:
-        sim_url = url.replace("http://magento.site/", os.environ.get('CLASSIFIEDS'))
+        sim_url = url.replace("http://magento.site/", os.environ.get('SHOPPING_ADMIN').rstrip('/') + '/')
         return sim_url
     if "@gitlab.com" in url:
         url = url.replace("@gitlab.com", "@localhost:2222")

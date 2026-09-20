@@ -42,6 +42,9 @@ class WebChallengerEnv(ScriptBrowserEnv):
         
         self.browser = self.playwright.chromium.launch(
             headless=self.headless,
+            **({"executable_path": os.environ["WEBCHALLENGER_CHROMIUM"],
+                "args": ["--remote-debugging-port=" + os.environ["WEBTACTIX_CDP_PORT"]]}
+               if os.environ.get("WEBCHALLENGER_EXPERIMENT") else {}),
         )
 
         if config_file:
@@ -85,7 +88,7 @@ class WebChallengerEnv(ScriptBrowserEnv):
 
         self.context = self.browser.new_context(
             viewport=viewport_size,
-            # storage_state=storage_state,
+            storage_state=instance_config.get("storage_state") if os.environ.get("WEBCHALLENGER_EXPERIMENT") else None,
             device_scale_factor=1,
         )
 

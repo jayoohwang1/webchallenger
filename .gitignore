@@ -35,3 +35,7 @@ webchallenger/memory/saved_files/*
 *.swp
 .idea/
 .vscode/
+
+# Private experiment outputs and frozen exploration artifacts
+.local/
+experiments/gemini/frozen-memory/
